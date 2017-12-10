@@ -37,12 +37,34 @@
                         }
 
                         ]
+                    }, {
+                        id: 2,
+                        title: "Worst car?",
+                        answers: [{
+                            id: 1,
+                            content: "ford",
+                            correct: false
+                        }, {
+                            id: 2,
+                            content: "fiat",
+                            correct: true
+                        }, {
+                            id: 3,
+                            content: "tesla",
+                            correct: false
+                        }, {
+                            id: 4,
+                            content: "GM",
+                            correct: false
+                        }
+
+                        ]
                     }]
             }
         },
         computed: {
             actualQuestion() {
-                return this.questionsList[ 0 ]
+                return this.questionsList[ this.$store.state.questionIndex ];
             }
         }
     }
