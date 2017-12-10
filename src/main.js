@@ -49,6 +49,9 @@ const store = new Vuex.Store({
         safeGame(state) {
             state.infinite = true;
         },
+        getinfo(state, info) {
+            state.questions = info;
+        },
         resetState(state) {
             state.userName = '';
             state.maxQuestion = 1;
@@ -76,7 +79,10 @@ const store = new Vuex.Store({
         },
         reset({commit}) {
             commit('resetState');
-        }
+        },
+        getinfo({commit}, info) {
+            commit('getinfo', info);
+        },
     }
 });
 
