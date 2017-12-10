@@ -18,21 +18,21 @@ const store = new Vuex.Store({
         answersHistory: []
     },
     mutations: {
-        setName (state, payload) {
+        setName(state, payload) {
             state.userName = payload.userName;
         },
-        updateCurrentQuestion (state, questionData) {
+        updateCurrentQuestion(state, questionData) {
             if (state.questionPhase !== 2) {
                 state.questionPhase = 1;
                 state.currentQuestion = questionData;
             }
         },
-        finishedQuestion (state, correct) {
+        finishedQuestion(state, correct) {
             state.questionPhase = 2;
             state.currentQuestion.correct = correct;
-            state.answersHistory.push( correct );
+            state.answersHistory.push(correct);
         },
-        nextQuestion (state) {
+        nextQuestion(state) {
             if (state.questionIndex < state.maxQuestion) {
                 state.questionPhase = 0;
                 state.currentQuestion = {};
@@ -40,20 +40,31 @@ const store = new Vuex.Store({
             } else {
                 Quiz.$router.push('/finish');
             }
+        },
+        resetState(state) {
+            state.userName = '';
+            state.maxQuestion = 1;
+            state.questionIndex = 0;
+            state.questionPhase = 0; // 0 - waiting, 1 - highlighted, 2 - answered
+            state.currentQuestion = {};
+            state.answersHistory = [];
         }
     },
     actions: {
-        updateUserName ({ commit }, payload) {
+        updateUserName({commit}, payload) {
             commit('setName', payload);
         },
-        updateCurrentAnswer ({ commit }, questionData) {
+        updateCurrentAnswer({commit}, questionData) {
             commit('updateCurrentQuestion', questionData);
         },
-        answerQuestion ({commit}, correct) {
+        answerQuestion({commit}, correct) {
             commit('finishedQuestion', correct);
         },
-        moveNext({commit} ) {
+        moveNext({commit}) {
             commit('nextQuestion');
+        },
+        reset({commit}) {
+            commit('resetState');
         }
     }
 });

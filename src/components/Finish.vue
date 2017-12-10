@@ -1,10 +1,15 @@
 <template>
-    <p>Finish</p>
+    <p>WOW! To już koniec! Twój wynik: {{score}}</p>
 </template>
 
 <script>
     export default {
-        name: "finish"
+        name: "finish",
+        data() {
+            return {
+                score: '2/10'
+            }
+        }
     }
 </script>
 

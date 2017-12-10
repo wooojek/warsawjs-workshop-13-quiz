@@ -13,11 +13,16 @@
                 return this.$store.state.currentQuestion.answerId;
             },
             answerStatus() {
-                if( typeof this.$store.state.currentQuestion.correct !== 'undefined') {
-                    if (this.$store.state.currentQuestion.correct) {
-                        return 'correct-answer';
-                    } else {
-                        return 'wrong-answer';
+                if ( this.$store.state.questionPhase === 1 && this.answer.id === this.$store.state.currentQuestion.answerId) {
+                    return 'selected';
+                }
+                if( this.$store.state.questionPhase === 2 ) {
+                    if (this.answer.id === this.$store.state.currentQuestion.answerId) {
+                        if (this.$store.state.currentQuestion.correct) {
+                            return 'correct-answer';
+                        } else {
+                            return 'wrong-answer';
+                        }
                     }
                 }
                 return null;

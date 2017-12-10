@@ -20,6 +20,9 @@
         components: {
             UserName,
             AboutUs
+        },
+        mounted() {
+            this.$store.dispatch('reset');
         }
     }
 </script>

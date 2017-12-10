@@ -1,5 +1,5 @@
 <template>
-    <div class="gamemaster player-selected">
+    <div :class="'gamemaster ' + changeStatus">
         <div v-if="state===1">
             <p>Czy jesteś pewien?</p>
             <button @click="accept">Tak</button>
@@ -27,6 +27,19 @@
             },
             state() {
                 return this.$store.state.questionPhase;
+            },
+            changeStatus() {
+                if (this.$store.state.questionPhase === 1) {
+                    return 'player-selected';
+                } else if (this.$store.state.questionPhase === 2) {
+                    if (this.$store.state.currentQuestion.correct) {
+                        return 'player-succeed';
+                    } else {
+                        return 'player-failed';
+                    }
+                } else {
+                    return;
+                }
             }
         },
         methods: {
