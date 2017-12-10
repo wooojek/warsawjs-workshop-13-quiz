@@ -1,6 +1,7 @@
 # warsawjs-workshop-13-quiz
 
-> A Vue.js project
+> A Vue.js project 
+Simple quiz game using vueex, vue-router
 
 ## Build Setup
 
