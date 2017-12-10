@@ -2,11 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Vuex from 'vuex';
+// import VueResource from 'vue-resource';
 import App from './App';
 import router from './router';
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
+// Vue.use(VueResource);
 
 const store = new Vuex.Store({
     state: {
@@ -15,7 +17,9 @@ const store = new Vuex.Store({
         questionIndex: 0,
         questionPhase: 0, // 0 - waiting, 1 - highlighted, 2 - answered
         currentQuestion: {},
-        answersHistory: []
+        answersHistory: [],
+        won:false,
+        infinite:false,
     },
     mutations: {
         setName(state, payload) {
@@ -30,7 +34,7 @@ const store = new Vuex.Store({
         finishedQuestion(state, correct) {
             state.questionPhase = 2;
             state.currentQuestion.correct = correct;
-            state.answersHistory.push(correct);
+            state.answersHistory.push(state.currentQuestion);
         },
         nextQuestion(state) {
             if (state.questionIndex < state.maxQuestion) {
@@ -38,8 +42,12 @@ const store = new Vuex.Store({
                 state.currentQuestion = {};
                 state.questionIndex++;
             } else {
+                state.won=true;
                 Quiz.$router.push('/finish');
             }
+        },
+        safeGame(state) {
+            state.infinite = true;
         },
         resetState(state) {
             state.userName = '';
@@ -53,6 +61,9 @@ const store = new Vuex.Store({
     actions: {
         updateUserName({commit}, payload) {
             commit('setName', payload);
+        },
+        changeGameToSafe({commit}) {
+            commit('safeGame');
         },
         updateCurrentAnswer({commit}, questionData) {
             commit('updateCurrentQuestion', questionData);

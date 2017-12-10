@@ -47,7 +47,7 @@
                 this.$store.dispatch('answerQuestion', checker(this.question.questionId, this.question.answerId));
             },
             moveNext() {
-                if(this.$store.state.currentQuestion.correct) {
+                if(this.$store.state.currentQuestion.correct || this.$store.state.infinite) {
                     this.$store.dispatch('moveNext');
                 } else {
                     this.$router.push('/finish');

@@ -3,6 +3,10 @@
         <input id="userName" v-model="userName" :placeholder="placeholder"/>
         <p>Gracz: <span>{{ userName }}</span></p>
         <input type="submit" @click="startQuiz" :value="buttonText">
+
+
+        <h3>I want to stay safe (don't finish with error)</h3>
+        <input type="submit" @click="startSafeQuiz" :value="buttonText">
     </div>
 </template>
 
@@ -16,11 +20,9 @@
                 buttonText: `Play!`
             }
         },
-        computed: {
-
-        },
+        computed: {},
         methods: {
-            startQuiz (e) {
+            startQuiz(e) {
                 e.preventDefault();
                 let userNameInput = document.getElementById('userName');
                 if (this.userName === '') {
@@ -31,7 +33,22 @@
                 } else {
                     userNameInput.style.borderColor = '#41B883';
                     this.$router.push('/quiz');
-                    this.$store.dispatch('updateUserName', { userName: this.userName });
+                    this.$store.dispatch('updateUserName', {userName: this.userName});
+                }
+            },
+            startSafeQuiz(e) {
+                e.preventDefault();
+                let userNameInput = document.getElementById('userName');
+                if (this.userName === '') {
+                    userNameInput.style.borderColor = 'red';
+                    setTimeout(function () {
+                        userNameInput.style.borderColor = '#41B883';
+                    }, 5000);
+                } else {
+                    userNameInput.style.borderColor = '#41B883';
+                    this.$router.push('/quiz');
+                    this.$store.dispatch('updateUserName', {userName: this.userName});
+                    this.$store.dispatch('safeGame');
                 }
             }
         }
@@ -39,25 +56,28 @@
 </script>
 
 <style scoped>
-.user-name--input {
-}
-.user-name--input span {
-    font-weight: 700;
-    font-size: 18px;
-}
-.user-name--input input {
-    border-radius: 5px;
-    padding: 10px 20px;
-    border-color: #41B883;
-}
-.user-name--input input[type='submit'] {
-    border-color: #41B883;
-    border-radius: 5px;
-    background-color: #41B883;
-    padding: 10px 20px;
-    font-size: 24px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #fff;
-}
+    .user-name--input {
+    }
+
+    .user-name--input span {
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .user-name--input input {
+        border-radius: 5px;
+        padding: 10px 20px;
+        border-color: #41B883;
+    }
+
+    .user-name--input input[type='submit'] {
+        border-color: #41B883;
+        border-radius: 5px;
+        background-color: #41B883;
+        padding: 10px 20px;
+        font-size: 24px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+    }
 </style>

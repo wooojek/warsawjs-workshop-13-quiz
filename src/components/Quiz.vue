@@ -23,6 +23,9 @@
         },
         mounted() {
             this.$store.dispatch('reset');
+            // this.$http.post('http://localhost:3000/api/questions').then(response => {
+            //
+            // });
         }
     }
 </script>
