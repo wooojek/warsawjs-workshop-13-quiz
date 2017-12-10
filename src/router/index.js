@@ -1,15 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Quiz from '@/components/Quiz'
+import Game from '@/components/Game'
+import Finish from '@/components/Finish'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
-  ]
+    routes: [
+        {
+            path: '/',
+            name: 'Quiz',
+            component: Quiz
+        },
+        {
+            path: '/quiz',
+            name: '',
+            component: Game
+        },
+        {
+            path: '/finish',
+            name: '',
+            component: Finish
+        }
+    ]
 })
