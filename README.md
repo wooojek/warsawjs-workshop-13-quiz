@@ -3,6 +3,18 @@
 > A Vue.js project 
 Simple quiz game using vueex, vue-router
 
+## TODO
+```
+- lifelines
+- summary
+- live progress
+```
+
+### NO RWD
+
+
+> A Vue.js quiz project
+
 ## Build Setup
 
 ``` bash

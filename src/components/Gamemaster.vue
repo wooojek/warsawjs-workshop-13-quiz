@@ -1,11 +1,11 @@
 <template>
     <div :class="'gamemaster ' + changeStatus">
         <div v-if="state===1">
-            <p>Czy jesteś pewien?</p>
+            <p>Are you sure?</p>
             <button @click="accept">Tak</button>
         </div>
         <div v-if="state===2">
-            <p>Idziemy dalej?</p>
+            <p>Continue?</p>
             <button @click="moveNext">Tak</button>
         </div>
     </div>
@@ -87,16 +87,17 @@
     }
 
     .player-selected {
-        background-image: url("http://bit.ly/2iKsD3W");
+        background-image: url("http://bit.ly/2CdD74n");
         background-position: center;
         background-size: cover;
     }
     .player-succeed {
-        background-position: center;
-        background-image: url("http://bit.ly/2BR3zQu");
+        background-position: left;
+        background-size: cover;
+        background-image: url("http://read.bi/2hlfNwg");
     }
     .player-failed {
-        background-image: url("http://bit.ly/2BsvLNv");
+        background-image: url("http://bit.ly/2BjqDun");
         background-size: cover;
         background-position: center;
     }
