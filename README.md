@@ -6,7 +6,6 @@ Simple quiz game using vueex, vue-router
 ## TODO
 ```
 - lifelines
-- live progress
 ```
 
 ### NO RWD
