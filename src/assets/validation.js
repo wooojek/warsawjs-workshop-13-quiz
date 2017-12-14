@@ -49,7 +49,7 @@ let data = [
     }, {
         id: 3,
         title: "Nobody's car?",
-        threshold: 1000,
+        threshold: 5000,
         answers: [{
             id: 1,
             content: "multipla",

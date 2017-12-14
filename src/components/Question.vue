@@ -4,19 +4,22 @@
         <answer v-for="(answer, index) in question.answers" :answer="answer" :key="index"
                 @handleAnswer="selectAnswer"></answer>
         <gamemaster></gamemaster>
+        <thresholds-list></thresholds-list>
     </div>
 </template>
 
 <script>
     import Answer from '@/components/Answer';
     import Gamemaster from '@/components/Gamemaster';
+    import ThresholdsList from '@/components/ThresholdsList';
 
     export default {
         name: "question",
         props: ['question'],
         components: {
             Answer,
-            Gamemaster
+            Gamemaster,
+            ThresholdsList
         },
         methods: {
             selectAnswer(answerData) {
