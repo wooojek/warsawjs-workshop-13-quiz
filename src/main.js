@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 // import VueResource from 'vue-resource';
 import App from './App';
 import router from './router';
+import { countQuestions, data as questions} from './assets/validation.js';
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
@@ -13,11 +14,13 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         userName: '',
-        maxQuestion: 1,
+        maxQuestion: countQuestions() - 1,
         questionIndex: 0,
         questionPhase: 0, // 0 - waiting, 1 - highlighted, 2 - answered
         currentQuestion: {},
         answersHistory: [],
+        totalQuestions: countQuestions(),
+        questionsList: questions,
         won:false,
         infinite:false,
     },
@@ -54,7 +57,7 @@ const store = new Vuex.Store({
         },
         resetState(state) {
             state.userName = '';
-            state.maxQuestion = 1;
+            state.maxQuestion = countQuestions() - 1;
             state.questionIndex = 0;
             state.questionPhase = 0; // 0 - waiting, 1 - highlighted, 2 - answered
             state.currentQuestion = {};

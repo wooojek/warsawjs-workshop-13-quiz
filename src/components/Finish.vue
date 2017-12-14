@@ -1,6 +1,6 @@
 <template>
     <div class="finish">
-        <p>WOW! To już koniec! Twój wynik: {{getHistory}}</p>
+        <p>WOW! It's over! Your score: {{getHistory.correct }} / {{ getHistory.sum }}</p>
         <button @click="goHome">Go home</button>
     </div>
 </template>
@@ -10,12 +10,17 @@
         name: "finish",
         data() {
             return {
-                score: '2/10'
+                score: '2/10' ///fake data
             }
         },
         computed: {
             getHistory() {
-                return this.$store.state.answersHistory;
+                let correctCounter = 0;
+                let arrayCorrect = this.$store.state.answersHistory.filter(item => item.correct ? correctCounter++ : null);
+                return {
+                    correct: correctCounter,
+                    sum: this.$store.state.totalQuestions
+                };
             }
         },
         methods: {
