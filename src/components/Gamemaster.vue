@@ -16,11 +16,6 @@
 
     export default {
         name: "gamemaster",
-        data() {
-            return {
-
-            }
-        },
         computed: {
             question(){
                 return this.$store.state.currentQuestion;

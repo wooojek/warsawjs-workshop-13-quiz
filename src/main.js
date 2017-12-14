@@ -23,6 +23,8 @@ const store = new Vuex.Store({
         questionsList: questions,
         won:false,
         infinite:false,
+        lifelines: true,
+        lifelinesOpened: false,
     },
     mutations: {
         setName(state, payload) {
@@ -55,6 +57,10 @@ const store = new Vuex.Store({
         getinfo(state, info) {
             state.questions = info;
         },
+        disablePublicVote(state) {
+            state.lifelines = false;
+            state.lifelinesOpened = true;
+        },
         resetState(state) {
             state.userName = '';
             state.maxQuestion = countQuestions() - 1;
@@ -63,6 +69,8 @@ const store = new Vuex.Store({
             state.currentQuestion = {};
             state.answersHistory = [];
             state.infinite = false;
+            state.lifelines = true;
+            state.lifelinesOpened = false;
         }
     },
     actions: {
@@ -90,6 +98,9 @@ const store = new Vuex.Store({
         getinfo({commit}, info) {
             commit('getinfo', info);
         },
+        usePublicVote({commit}) {
+            commit('disablePublicVote')
+        }
     }
 });
 

@@ -5,6 +5,7 @@
                 @handleAnswer="selectAnswer"></answer>
         <gamemaster></gamemaster>
         <thresholds-list></thresholds-list>
+        <lifelines></lifelines>
     </div>
 </template>
 
@@ -12,6 +13,7 @@
     import Answer from '@/components/Answer';
     import Gamemaster from '@/components/Gamemaster';
     import ThresholdsList from '@/components/ThresholdsList';
+    import Lifelines from '@/components/Lifelines';
 
     export default {
         name: "question",
@@ -19,7 +21,8 @@
         components: {
             Answer,
             Gamemaster,
-            ThresholdsList
+            ThresholdsList,
+            Lifelines
         },
         methods: {
             selectAnswer(answerData) {
