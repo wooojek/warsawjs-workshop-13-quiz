@@ -18,7 +18,7 @@
             thresholdStatus() {
                 let thresholdStatusArray = [];
                 this.$store.state.answersHistory.forEach((answer, index) => {
-                    answer.correct ? thresholdStatusArray[this.totalQuestions - index] = 'successAnswer' : 'wrongAnswer';
+                    answer.correct ? thresholdStatusArray[this.totalQuestions - index] = 'successAnswer' : thresholdStatusArray[this.totalQuestions - index] = 'wrongAnswer';
                 });
                 return thresholdStatusArray;
             }

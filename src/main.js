@@ -62,6 +62,7 @@ const store = new Vuex.Store({
             state.questionPhase = 0; // 0 - waiting, 1 - highlighted, 2 - answered
             state.currentQuestion = {};
             state.answersHistory = [];
+            state.infinite = false;
         }
     },
     actions: {
@@ -79,6 +80,9 @@ const store = new Vuex.Store({
         },
         moveNext({commit}) {
             commit('nextQuestion');
+        },
+        safeGame({commit}) {
+          commit('safeGame');
         },
         reset({commit}) {
             commit('resetState');
